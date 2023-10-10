@@ -41,6 +41,10 @@ export const Screen = component$(() => {
       state.camera = noSerialize(camera);
       state.renderer = noSerialize(renderer);
 
+      renderer.setPixelRatio(
+        window.devicePixelRatio > 1 ? window.devicePixelRatio : 1,
+      );
+      renderer.setSize(window.innerWidth, window.innerHeight);
       camera.position.setZ(30);
       camera.position.setX(-3);
 
@@ -116,5 +120,5 @@ export const Screen = component$(() => {
       animate();
     }
   });
-  return <canvas ref={bg} id="bg" class='h-screen w-full'></canvas>;
+  return <canvas ref={bg} id="bg" class="h-screen w-full border-2"></canvas>;
 });
