@@ -7,7 +7,7 @@ import {
 } from "@builder.io/qwik";
 import type { NoSerialize } from "@builder.io/qwik";
 import * as THREE from "three";
-import { OrbitControls } from "three-orbitcontrols";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 interface State {
