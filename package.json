@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "three": "^0.157.0",
-    "three-orbitcontrols": "^2.110.3",
     "threejs-toys": "^0.0.8"
   }
 }
