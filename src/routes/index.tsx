@@ -4,11 +4,11 @@ import { Screen } from "../components/ui/Screen";
 
 export default component$(() => {
   return (
-    <div class='flex flex-col justify-center items-center'>
+    <div class='flex flex-col justify-center items-center h-full'>
       <Screen />
-      <div class="relative text-center uppercase">
+      <div class="absolute bottom-10 text-center uppercase">
         <h1 class="text-xl mx-auto font-bold tracking-widest">
-          Coming Soon...
+          Coming Soon <span class='animate-ping'>_</span>
         </h1>
       </div>
     </div>

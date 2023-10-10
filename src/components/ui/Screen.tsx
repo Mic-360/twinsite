@@ -41,8 +41,6 @@ export const Screen = component$(() => {
       state.camera = noSerialize(camera);
       state.renderer = noSerialize(renderer);
 
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth - 80, window.innerHeight - 80);
       camera.position.setZ(30);
       camera.position.setX(-3);
 
@@ -94,7 +92,7 @@ export const Screen = component$(() => {
       let model: any | null = null;
       loader.load("logo.glb", (gltf: any) => {
         model = gltf.scene.children[0];
-        model.material.color = new THREE.Color(0xffffff);
+        model.material.color = new THREE.Color(0xeeff15);
         model.position.x = -3;
 
         scene.add(model);
@@ -118,5 +116,5 @@ export const Screen = component$(() => {
       animate();
     }
   });
-  return <canvas ref={bg} id="bg"></canvas>;
+  return <canvas ref={bg} id="bg" class='h-screen w-full'></canvas>;
 });
