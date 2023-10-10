@@ -19,7 +19,7 @@ html {
 body {
   background: var(--qwik-dark-background);
   color: var(--qwik-dark-text);
-  overflow: hidden;
+  overflow: none;
 }
 
 h1 {

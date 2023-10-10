@@ -4,21 +4,19 @@ import { Screen } from "../components/ui/Screen";
 
 export default component$(() => {
   return (
-    <>
-      <div class="container-center">
-        <Screen />
-        <div class="typewriter absolute bottom-10 w-full uppercase">
-          <h1 class="text-center text-xl font-bold tracking-widest text-[#eeff15]">
-            Coming Soon ...
-          </h1>
-        </div>
+    <div class='flex flex-col justify-center items-center'>
+      <Screen />
+      <div class="relative text-center uppercase">
+        <h1 class="text-xl mx-auto font-bold tracking-widest">
+          Coming Soon...
+        </h1>
       </div>
-    </>
+    </div>
   );
 });
 
 export const head: DocumentHead = {
-  title: "Twinverse Technology",
+  title: "Twinverse Technology Pvt. Ltd.",
   meta: [
     {
       name: "DYNAMIC AUGMENTED REALITY/VIRTUAL REALITY COMPANY",

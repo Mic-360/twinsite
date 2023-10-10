@@ -7,7 +7,7 @@ import {
 } from "@builder.io/qwik";
 import type { NoSerialize } from "@builder.io/qwik";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 interface State {
@@ -42,7 +42,7 @@ export const Screen = component$(() => {
       state.renderer = noSerialize(renderer);
 
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(window.innerWidth - 80, window.innerHeight - 80);
       camera.position.setZ(30);
       camera.position.setX(-3);
 
@@ -51,26 +51,24 @@ export const Screen = component$(() => {
       //! Torus
       const geometry = new THREE.TorusGeometry(10, 3, 166, 1000);
       const material = new THREE.MeshStandardMaterial({
-        color: 0x2c2747,
-        roughness: 0.8,
-        metalness: 0.9,
-        opacity: 0.5,
+        color: 0xeeff15,
+        roughness: 0.9,
+        metalness: 0.4,
+        opacity: 0.8,
       });
       const torus = new THREE.Mesh(geometry, material);
+      torus.position.x = -3;
       scene.add(torus);
 
       // Lights
       const pointLight = new THREE.PointLight(0xffffff);
 
       const directionalLight = new THREE.DirectionalLight(0xffffff);
-      directionalLight.position.set(5, 5, 5);
 
       const ambientLight = new THREE.AmbientLight(0xffffff);
       ambientLight.intensity = 0.8;
 
       scene.add(ambientLight, directionalLight);
-
-      const controls = new OrbitControls(camera, renderer.domElement);
 
       const Lights = () => {
         const directionalLight = new THREE.DirectionalLight(0xffffff);
@@ -96,26 +94,11 @@ export const Screen = component$(() => {
       let model: any | null = null;
       loader.load("logo.glb", (gltf: any) => {
         model = gltf.scene.children[0];
-        model.material.color = new THREE.Color(0xeeff15);
+        model.material.color = new THREE.Color(0xffffff);
+        model.position.x = -3;
+
         scene.add(model);
       });
-
-      //! Moon
-      // const moonTexture = new THREE.TextureLoader().load("moon.jpg");
-      // const normalTexture = new THREE.TextureLoader().load("normal.jpg");
-
-      // const moon = new THREE.Mesh(
-      //   new THREE.SphereGeometry(3, 32, 32),
-      //   new THREE.MeshStandardMaterial({
-      //     map: moonTexture,
-      //     normalMap: normalTexture,
-      //   }),
-      // );
-
-      // scene.add(moon);
-
-      // moon.position.z = 30;
-      // moon.position.setX(-10);
 
       // Animation Loop
       const animate = () => {
@@ -125,12 +108,9 @@ export const Screen = component$(() => {
         torus.rotation.y += 0.005;
         torus.rotation.z += 0.1;
 
-        // moon.rotation.x += 0.005;
         if (model) {
           model.rotation.y += 0.005;
         }
-
-        controls.update();
 
         renderer.render(scene, camera);
       };
